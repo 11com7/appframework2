@@ -1,4 +1,4 @@
-/*! intel-appframework - v2.1.0 - 2014-09-25 */
+/*! intel-appframework - v2.1.0 - 2014-11-05 */
 
 /**
  * jq.appframework.js
@@ -553,8 +553,9 @@ window.af=window.jq=jQuery;
             this.activeSheet = markup;
             $(elID).append("<div id='af_action_mask' style='position:absolute;top:0px;left:0px;right:0px;bottom:0px;z-index:9998;background:rgba(0,0,0,.4)'/>");
             setTimeout(function() {
+                var height = markup.height();
                 markup.vendorCss("Transition", "all 300ms");
-                markup.cssTranslate("0," + (-(markup.height())) + "px");
+                markup.cssTranslate("0," + (-height) + "px");
             }, 10);
             $("#af_action_mask").bind("touchstart touchmove touchend click",function(e){
                 e.preventDefault();

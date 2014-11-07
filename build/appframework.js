@@ -1,4 +1,4 @@
-/*! intel-appframework - v2.1.0 - 2014-11-05 */
+/*! intel-appframework - v2.1.0 - 2014-11-07 */
 
 /**
  * App Framework  query selector class for HTML5 mobile apps on a WebkitBrowser.
@@ -867,8 +867,12 @@ if (!window.af || typeof(af) !== "function") {
             */
             removeProp: function(prop) {
                 var removePropFn=function(param) {
-                    if (that[i][param])
-                        that[i][param] = undefined;
+                    try {
+                        if (that[i][param]) {
+                            that[i][param] = undefined;
+                        }
+                    } catch(e) {}
+
                     if (that[i].afmCacheId && _propCache[that[i].afmCacheId]) {
                         delete _propCache[that[i].afmCacheId][prop];
                     }

@@ -1,4 +1,4 @@
-/*! intel-appframework - v2.1.0 - 2014-11-05 */
+/*! intel-appframework - v2.1.0 - 2014-11-07 */
 
 /**
  * jq.appframework.js

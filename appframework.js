@@ -2100,11 +2100,11 @@ if (!window.af || typeof(af) !== "function") {
         function detectUA($, userAgent) {
             $.os = {};
             $.os.webkit = userAgent.match(/WebKit\/([\d.]+)/) ? true : false;
-            $.os.android = userAgent.match(/(Android)\s+([\d.]+)/) || userAgent.match(/Silk-Accelerated/) ? true : false;
-            $.os.androidICS = $.os.android && userAgent.match(/(Android)\s4/) ? true : false;
+            $.os.android = userAgent.match(/(Android)[\s-]+([\d.]+)/) || userAgent.match(/Silk-Accelerated/) ? true : false;
+            $.os.androidICS = $.os.android && _getVersion(userAgent, /Android[\s-](\d+)/) >= 4 ? true : false;
             $.os.ipad = userAgent.match(/(iPad).*OS\s([\d_]+)/) ? true : false;
             $.os.iphone = !$.os.ipad && userAgent.match(/(iPhone\sOS)\s([\d_]+)/) ? true : false;
-            $.os.ios7 = ($.os.ipad||$.os.iphone)&&userAgent.match(/7_/)||($.os.ipad||$.os.iphone)&&userAgent.match(/8_/) ? true : false;
+            $.os.ios7 = ($.os.ipad||$.os.iphone) && _getVersion(userAgent, /\sOS\s(\d+)/) >= 7 ? true : false;
             $.os.webos = userAgent.match(/(webOS|hpwOS)[\s\/]([\d.]+)/) ? true : false;
             $.os.touchpad = $.os.webos && userAgent.match(/TouchPad/) ? true : false;
             $.os.ios = $.os.ipad || $.os.iphone;
@@ -2134,6 +2134,22 @@ if (!window.af || typeof(af) !== "function") {
                     $.feat.cssPrefix=items[j];
             }
 
+            /**
+             * (internal) returns a version number
+             * @example _getVersion("Sample UserAgent Version 42.31.20", /Version\s(\d+)/)      // returns 42
+             * @param {String} userAgent
+             * @param {RegExp} regex version RegExp, the major number has to be in parenthesis (\d+)
+             * @returns {number|boolean}
+             * @private
+             */
+            function _getVersion(userAgent, regex)
+            {
+                if (!userAgent.substr)  { throw new TypeError("userAgent has to be String, but was " + (typeof userAgent)); }
+                if (!regex.test)  { throw new TypeError("regex has to be RegExp, but was " + (typeof regex)); }
+
+                var version = userAgent.match(regex);
+                return version && version.length && version.hasOwnProperty(1) ? parseInt(version[1], 10) : false;
+            }
         }
 
         detectUA($, navigator.userAgent);

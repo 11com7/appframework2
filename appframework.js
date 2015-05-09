@@ -2098,7 +2098,10 @@ if (!window.af || typeof(af) !== "function") {
          * @api private
          */
         function detectUA($, userAgent) {
-            $.os = {};
+          var userAgentLengthMax = 100;
+          userAgent = userAgent.substr ? (userAgent.length > userAgentLengthMax ? userAgent.substr(0, userAgentLengthMax) : userAgent) : '';
+
+          $.os = {};
             $.os.webkit = userAgent.match(/WebKit\/([\d.]+)/) ? true : false;
             $.os.android = userAgent.match(/(Android)[\s-]+([\d.]+)/) || userAgent.match(/Silk-Accelerated/) ? true : false;
             $.os.androidICS = $.os.android && _getVersion(userAgent, /Android[\s-](\d+)/) >= 4 ? true : false;

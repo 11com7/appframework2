@@ -243,16 +243,17 @@ describe("test user agent detection", function () {
     });
 
 
-    it("should ignore large fake user agents", function () {
+    it("should handle large fake user agents (42 kiB)", function () {
         "use strict";
 
-        var a = "0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789";
-        for (var t=0; t < 20; t++)
+        // build 42 kiB fake user agent
+        var a = "01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890",b='';
+        for (var t=0; t < 426; t++)
         {
-            a += a;
+            b += a;
         }
 
-        $.__detectUA($, a);
+        $.__detectUA($, b);
         $.os.ios.should.equal(false);
         $.os.ios7.should.equal(false);
         $.os.android.should.equal(false);

@@ -516,7 +516,7 @@ if (!window.af || typeof(af) !== "function") {
                 $("#foo").html("new html",false); //Do not do memory management cleanup
                 ```
             * @param {String} html to set
-            * @param {Bool} [cleanup] - set to false for performance tests and if you do not want to execute memory management cleanup
+            * @param {boolean} [cleanup] - set to false for performance tests and if you do not want to execute memory management cleanup
             * @return {$afm} an appframework object
             * @title $().html([html])
             */

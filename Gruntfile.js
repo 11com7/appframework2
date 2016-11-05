@@ -8,6 +8,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-mochaccino");
     grunt.loadNpmTasks("grunt-closure-compiler");
     grunt.loadNpmTasks("grunt-banner");
+    grunt.loadNpmTasks("grunt-force-task");
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -256,6 +257,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask("test", ["mochaccino:unit"]);
     grunt.registerTask("cov", ["clean","mochaccino:cov"]);
-    grunt.registerTask("rebuild" , ["cssmin","concat","closure-compiler","usebanner"]);
+    grunt.registerTask("rebuild" , ["force:cssmin","concat","closure-compiler","usebanner"]);
     grunt.registerTask("hint" , ["jshint"]);
 };

@@ -3,6 +3,10 @@
  * translates desktop browsers events to touch events and prevents defaults
  * It can be used independently in other apps but it is required for using the touchLayer in the desktop
  *
+ * dom, 2017-09-09:
+ * 11com7 added `$.allowDesktopDragEvents = true` option to allow desktop browser drag events. The option has
+ * to be set before `af.desktopBrowsers.js` is loaded/executed. This is just a flag for debug purpose!
+ *
  * @param {Function} $ The appframework selector function
  */
  /* global DocumentTouch*/
@@ -167,13 +171,16 @@
     }
 
     // prevent all mouse events which don't exist on touch devices
-    document.addEventListener("drag", preventAll, true);
-    document.addEventListener("dragstart", preventAll, true);
-    document.addEventListener("dragenter", preventAll, true);
-    document.addEventListener("dragover", preventAll, true);
-    document.addEventListener("dragleave", preventAll, true);
-    document.addEventListener("dragend", preventAll, true);
-    document.addEventListener("drop", preventAll, true);
+    if (!$.hasOwnProperty('allowDesktopDragEvents') || !$['allowDesktopDragEvents']) {
+        document.addEventListener("drag", preventAll, true);
+        document.addEventListener("dragstart", preventAll, true);
+        document.addEventListener("dragenter", preventAll, true);
+        document.addEventListener("dragover", preventAll, true);
+        document.addEventListener("dragleave", preventAll, true);
+        document.addEventListener("dragend", preventAll, true);
+        document.addEventListener("drop", preventAll, true);
+    }
+
     // Allow selection of input elements
     document.addEventListener("selectstart", function(e){
         preventAllButInputs(e, e.target);
@@ -187,7 +194,5 @@
             cancelClickMove = false;
         }
     }, true);
-
-
 
 })(this.af);

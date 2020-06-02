@@ -11,7 +11,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-force-task");
 
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
+        pkg: grunt.file.readJSON("package.json"),
         clean: [ "build/cov" ],
 
         // see .jshintrc file for the options;
@@ -183,7 +183,7 @@ module.exports = function (grunt) {
         },
         "closure-compiler": {
             appframework: {
-                closurePath: "../closure/",
+                closurePath: path.resolve(path.resolve("node_modules/google-closure-compiler-java")),
                 js: ["appframework.js","ayepromise.js"],
                 jsOutputFile: "build/appframework.min.js",
                 maxBuffer: 500,
@@ -192,7 +192,7 @@ module.exports = function (grunt) {
                 noreport:true
             },
             "appframework-ui": {
-                closurePath: "../closure/",
+                closurePath: path.resolve("node_modules/google-closure-compiler-java"),
                 js: ["appframework.js","ayepromise.js","build/ui/appframework.ui.js"],
                 jsOutputFile: "build/ui/appframework.ui.min.js",
                 options: {
@@ -201,7 +201,7 @@ module.exports = function (grunt) {
                 noreport:true
             },
             "af-ui-jquery": {
-                closurePath: "../closure/",
+                closurePath: path.resolve("node_modules/google-closure-compiler-java"),
                 js: ["build/ui/af.ui.jquery.js"],
                 jsOutputFile: "build/ui/af.ui.jquery.min.js",
                 options: {
@@ -210,7 +210,7 @@ module.exports = function (grunt) {
                 noreport:true
             },
             plugins: {
-                closurePath: "../closure/",
+                closurePath: path.resolve("node_modules/google-closure-compiler-java"),
                 js:"plugins/*.js",
                 jsOutputFile:"build/af.plugins.min.js",
                 options: {
@@ -219,7 +219,7 @@ module.exports = function (grunt) {
                 noreport:true
             },
             jq: {
-                closurePath: "../closure/",
+                closurePath: path.resolve("node_modules/google-closure-compiler-java"),
                 js:"jq.appframework.js",
                 jsOutputFile:"build/jq.appframework.min.js",
                 options: {

@@ -1422,7 +1422,6 @@
             this.setFinishCalback(scrollInfo.duration);
             if (this.infinite && !this.infiniteTriggered) {
                 if ((Math.abs(scrollInfo.y) >= (this.el.clientHeight - this.container.clientHeight))) {
-                    var self = this;
                     setTimeout(function(){
                         self.infiniteTriggered = true;
                         $.trigger(self, "infinite-scroll");

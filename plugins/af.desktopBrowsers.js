@@ -9,7 +9,6 @@
  *
  * @param {Function} $ The appframework selector function
  */
- /* global DocumentTouch*/
 (function ($) {
     "use strict";
     var cancelClickMove = false;
@@ -59,14 +58,14 @@
     }
 
     Touch.prototye = {
-        "clientX":0,
-        "clientY":0,
-        "screenX":0,
-        "screenY":0,
-        "pageX":0,
-        "pageY":0,
-        "identifier":0
-    }
+        "clientX": 0,
+        "clientY": 0,
+        "screenX": 0,
+        "screenY": 0,
+        "pageX": 0,
+        "pageY": 0,
+        "identifier": 0
+    };
 
 
 
@@ -171,7 +170,7 @@
     }
 
     // prevent all mouse events which don't exist on touch devices
-    if (!$.hasOwnProperty('allowDesktopDragEvents') || !$['allowDesktopDragEvents']) {
+    if (!$.hasOwnProperty("allowDesktopDragEvents") || !$.allowDesktopDragEvents) {
         document.addEventListener("drag", preventAll, true);
         document.addEventListener("dragstart", preventAll, true);
         document.addEventListener("dragenter", preventAll, true);

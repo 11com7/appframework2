@@ -10,7 +10,6 @@
  * @api private
  */
  /* jshint eqeqeq:false */
-  /* global af: false */
 
 if (!window.af || typeof(af) !== "function") {
 
@@ -21,7 +20,7 @@ if (!window.af || typeof(af) !== "function") {
      * @param {Window} window The global window object
      * @api private
      */
-    var af = (function(window) {
+    var af = (function(window) { // jshint ignore:line
         "use strict";
         var nundefined,
             document = window.document,
@@ -1893,8 +1892,8 @@ if (!window.af || typeof(af) !== "function") {
                 xhr.send(settings.data);
             } catch (e) {
                 // General errors (e.g. access denied) should also be sent to the error callback
-                deferred.resolve(context, xhr, "error",e);
-                settings.error.call(context, xhr, "error", e);
+                deferred.resolve(context, xhr, "error",e); // jshint ignore:line
+                settings.error.call(context, xhr, "error", e); // jshint ignore:line
             }
             return xhr;
         };
@@ -2099,7 +2098,7 @@ if (!window.af || typeof(af) !== "function") {
          */
         function detectUA($, userAgent) {
           var userAgentLengthMax = 200;
-          userAgent = userAgent.substr ? (userAgent.length > userAgentLengthMax ? userAgent.substr(0, userAgentLengthMax) : userAgent) : '';
+          userAgent = userAgent.substr ? (userAgent.length > userAgentLengthMax ? userAgent.substr(0, userAgentLengthMax) : userAgent) : "";
 
           $.os = {};
             $.os.webkit = userAgent.match(/WebKit\/([\d.]+)/) ? true : false;

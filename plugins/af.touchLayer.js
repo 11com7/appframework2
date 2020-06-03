@@ -236,7 +236,6 @@
         onOrientationChange: function() {
             //this.log("orientationchange");
             //if a resize already happened, fire the orientationchange
-            var self=this;
             var didBlur=false;
             if(this.focusedElement){
                 didBlur=true;

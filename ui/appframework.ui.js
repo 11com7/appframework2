@@ -139,7 +139,7 @@
             else if($.os.fennec){
                 that.ready(function(){
                     window.addEventListener("deviceorientation",function(){
-                        var tmpH=numOnly($("#header").css('height'))+numOnly($("#navbar").css('height'));
+                        var tmpH=numOnly($("#header").css("height"))+numOnly($("#navbar").css("height"));
                         $("#content").css("height",window.innerHeight-tmpH);
                     });
                 });
@@ -1855,7 +1855,7 @@
                     var refreshFunction;
                     var doReturn = false;
                     var retainDiv = $.query("#" + urlHash);
-                    var contentClasses = '';
+                    var contentClasses = "";
 
                     var hideRefresh = function(scrid) {
                         var scr = that.scrollingDivs[scrid];
@@ -2025,7 +2025,7 @@
                             var containerPos = jQactive.offset();
                             if (elPos.bottom > containerPos.bottom && elPos.height < containerPos.height) {
                                 //apply fix
-                                that.scrollingDivs[that.activeDiv.id].scrollToItem(jQel, 'bottom');
+                                that.scrollingDivs[that.activeDiv.id].scrollToItem(jQel, "bottom");
                             }
                         }
                     }

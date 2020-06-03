@@ -4,6 +4,8 @@
 var express = require("express");
 var http = require("http");
 var expect = require("chai").expect;
+var bodyParser = require('body-parser');
+
 
 // compare a requestMatcher with a request; if each property
 // in the requestMatcher matches with a property in the request,
@@ -78,7 +80,10 @@ var Server = function () {
     this.app = express();
 
     // use middleware to parse request body
-    this.app.use(express.bodyParser());
+    this.app.use(bodyParser.urlencoded({ type: "application/x-www-form-urlencoded", extended: true }));
+    this.app.use(bodyParser.json({ type: "application/*+json" }));
+    this.app.use(bodyParser.raw({ type: "application/vnd.custom-type" }));
+    this.app.use(bodyParser.text({ type: "text/html" }));
 
     // hand off requests to the request/response matcher
     this.app.all(/.*/, function (req, res) {

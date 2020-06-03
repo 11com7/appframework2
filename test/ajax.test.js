@@ -47,7 +47,7 @@ describe("ajax", function () {
             method: "GET",
             path: "/",
             query: {a: "1", b: "2"},
-            host: "localhost",
+            hostname: "localhost",
             headers: {
                 "x-bloop": "glong"
             }
@@ -83,7 +83,7 @@ describe("ajax", function () {
         var requestMatcher = {
             method: "POST",
             path: "/save",
-            host: "localhost",
+            hostname: "localhost",
             headers: {
                 "content-type": "application/x-www-form-urlencoded"
             },
@@ -115,7 +115,7 @@ describe("ajax", function () {
             method: "GET",
             path: "/",
             query: { x: "10", y: "20", z: "30" },
-            host: "localhost"
+            hostname: "localhost"
         };
 
         var xml = "<?xml version=\"1.0\"><top/>";
@@ -142,7 +142,7 @@ describe("ajax", function () {
         var requestMatcher = {
             method: "GET",
             path: "/",
-            host: "localhost"
+            hostname: "localhost"
         };
 
         var responseData = {hi: "world", nice: "to see you"};
@@ -168,7 +168,7 @@ describe("ajax", function () {
         var requestMatcher = {
             method: "GET",
             path: "/",
-            host: "localhost"
+            hostname: "localhost"
         };
 
         var response = { status: 503 };
@@ -195,7 +195,7 @@ describe("ajax", function () {
         var requestMatcher = {
             method: "GET",
             path: "/",
-            host: "localhost"
+            hostname: "localhost"
         };
 
         // response should still error because it times out,

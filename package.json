@@ -53,7 +53,10 @@
     "grunt-contrib-jshint": "~0.6.2",
     "grunt-contrib-uglify": "~0.2.2",
     "grunt-force-task": "^2.0.0",
-    "grunt-mochaccino": "~0.1.7",
+    "grunt-simple-mocha": "^0.4.1",
+    "jsdom": "16.2.2",
+    "jsdom-global": "3.0.2",
+    "mocha": "^7.2.0",
     "sinon": "~1.7.3"
   }
 }

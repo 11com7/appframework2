@@ -5,7 +5,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-cssmin");
     grunt.loadNpmTasks("grunt-contrib-concat");
-    grunt.loadNpmTasks("grunt-mochaccino");
+    grunt.loadNpmTasks("grunt-simple-mocha");
     grunt.loadNpmTasks("grunt-closure-compiler");
     grunt.loadNpmTasks("grunt-banner");
     grunt.loadNpmTasks("grunt-force-task");
@@ -29,16 +29,9 @@ module.exports = function (grunt) {
 
             ui: ["ui/appframework.ui.js", "ui/transitions/**/*.js" ]
         },
-        mochaccino: {
-            unit: [ "test/**/*.test.js" ],
-
-            // unit tests with coverage report in build/
-            cov: {
-                files: [
-                    { src: "test/**/*.test.js" }
-                ],
-                reporter: "html-cov",
-                reportDir: "build/cov"
+        simplemocha: {
+            all: {
+                src: ["test/**/*.test.js"]
             }
         },
         cssmin: {
@@ -255,8 +248,7 @@ module.exports = function (grunt) {
         "usebanner"
     ]);
 
-    grunt.registerTask("test", ["mochaccino:unit"]);
-    grunt.registerTask("cov", ["clean","mochaccino:cov"]);
+    grunt.registerTask("test", ["simplemocha"]);
     grunt.registerTask("rebuild" , ["force:cssmin","concat","closure-compiler","usebanner"]);
     grunt.registerTask("hint" , ["jshint"]);
 };

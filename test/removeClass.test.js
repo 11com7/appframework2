@@ -13,7 +13,7 @@ describe("removeClass", function () {
 
     it("should remove a single class from an element", function () {
         $("#single").removeClass("red");
-        ($("#single").attr("class") === null).should.be.true;
+        $("#single").attr("class").should.be.equal("");
     });
 
     it("should leave non-matching classes on an element", function () {
@@ -28,13 +28,13 @@ describe("removeClass", function () {
 
     it("should remove multiple classes from an element", function () {
         $("#multiple1").removeClass("red green");
-        ($("#multiple1").attr("class") === null).should.be.true;
+        $("#multiple1").attr("class").should.be.equal("");
     });
 
     it("should remove classes from multiple elements", function () {
         var greenDivs = $(".green");
         greenDivs.removeClass("red green");
-        (greenDivs[0].getAttribute("class") === null).should.be.true;
+        greenDivs[0].getAttribute("class").should.be.equal("");
         greenDivs[1].getAttribute("class").should.equal("orange");
     });
 });

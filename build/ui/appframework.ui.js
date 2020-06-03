@@ -4892,7 +4892,7 @@ if (!Date.now)
                     modalParent.find("#modalFooter").hide();
                 }
 
-                this.scrollToTop("modal");
+                this.scrollToTop("modal_container");
                 modalDiv.data("panel", id);
                 var myPanel=$panel.get(0);
                 var fnc = myPanel.getAttribute("data-load");
@@ -6003,7 +6003,7 @@ if (!Date.now)
                 x: "0%",
                 y: 0
             });
-            that.finishTransition(oldDiv);
+            that.finishTransition(oldDiv,currDiv);
             currDiv.style.zIndex = 2;
             oldDiv.style.zIndex = 1;
         },

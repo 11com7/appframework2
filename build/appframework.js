@@ -1669,6 +1669,7 @@ if (!window.af || typeof(af) !== "function") {
                 $(script).remove();
                 delete window[callbackName];
                 options.success.call(context, data);
+                options.complete.call(context, data);
             };
             if (options.url.indexOf("callback=?") !== -1) {
                 script.src = options.url.replace(/=\?/, "=" + callbackName);
@@ -1890,6 +1891,7 @@ if (!window.af || typeof(af) !== "function") {
                         xhr.onreadystatechange = empty;
                         xhr.abort();
                         settings.error.call(context, xhr, "timeout");
+                        settings.complete.call(context, xhr, "timeout");
                     }, settings.timeout);
                 xhr.send(settings.data);
             } catch (e) {
@@ -2099,7 +2101,7 @@ if (!window.af || typeof(af) !== "function") {
          * @api private
          */
         function detectUA($, userAgent) {
-          var userAgentLengthMax = 200;
+          var userAgentLengthMax = 300;
           userAgent = userAgent.substr ? (userAgent.length > userAgentLengthMax ? userAgent.substr(0, userAgentLengthMax) : userAgent) : "";
 
           $.os = {};
@@ -2130,6 +2132,13 @@ if (!window.af || typeof(af) !== "function") {
             $.feat.cssPrefix = $.os.webkit ? "Webkit" : $.os.fennec ? "Moz" : $.os.ie ? "ms" : $.os.opera ? "O" : "";
             $.feat.cssTransformStart = !$.os.opera ? "3d(" : "(";
             $.feat.cssTransformEnd = !$.os.opera ? ",0)" : ")";
+
+            // use promise feature detection only if the tested userAgent equals the navigator.userAgent to prevent
+            // false positive in unit tests with `domjs`
+            if($.os.ios && !$.os.ios7 && window && window.navigator && window.navigator.userAgent === userAgent) {
+                if("Promise" in window && -1 !== Promise.toString().indexOf("native"))
+                    $.os.ios7=true;
+            }
             if ($.os.android && !$.os.webkit)
                 $.os.android = false;
             var items=["Webkit","Moz","ms","O"];

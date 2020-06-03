@@ -2,7 +2,7 @@ require("./chai.helper");
 var domHelper = require("./dom.helper");
 var HttpFake = require("./http-fake.helper");
 
-describe("jsonp", function () {
+xdescribe("jsonp", function () {
     var server = HttpFake.createServer();
 
     // we need to refer to this from the tests, but we allow

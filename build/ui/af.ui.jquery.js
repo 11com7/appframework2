@@ -1,4 +1,4 @@
-/*! intel-appframework - v2.1.0 - 2015-05-09 */
+/*! intel-appframework - v2.1.0 - 2020-06-03 */
 
 /**
  * jq.appframework.js
@@ -2631,7 +2631,6 @@ if (!Date.now)
             this.setFinishCalback(scrollInfo.duration);
             if (this.infinite && !this.infiniteTriggered) {
                 if ((Math.abs(scrollInfo.y) >= (this.el.clientHeight - this.container.clientHeight))) {
-                    var self = this;
                     setTimeout(function(){
                         self.infiniteTriggered = true;
                         $.trigger(self, "infinite-scroll");
@@ -2813,6 +2812,7 @@ if (!Date.now)
         return scroller;
     })();
 })(af);
+
 /**
  * copyright: 2011 Intel
  * description:  This script will replace all drop downs with friendly select controls.  Users can still interact
@@ -3445,7 +3445,6 @@ if (!Date.now)
         onOrientationChange: function() {
             //this.log("orientationchange");
             //if a resize already happened, fire the orientationchange
-            var self=this;
             var didBlur=false;
             if(this.focusedElement){
                 didBlur=true;
@@ -3886,6 +3885,7 @@ if (!Date.now)
     };
 
 })(af);
+
 /**
  * af.popup - a popup/alert library for html5 mobile apps
  * copyright Indiepath 2011 - Tim Fisher
@@ -4234,7 +4234,7 @@ if (!Date.now)
             else if($.os.fennec){
                 that.ready(function(){
                     window.addEventListener("deviceorientation",function(){
-                        var tmpH=numOnly($("#header").css('height'))+numOnly($("#navbar").css('height'));
+                        var tmpH=numOnly($("#header").css("height"))+numOnly($("#navbar").css("height"));
                         $("#content").css("height",window.innerHeight-tmpH);
                     });
                 });
@@ -5950,7 +5950,7 @@ if (!Date.now)
                     var refreshFunction;
                     var doReturn = false;
                     var retainDiv = $.query("#" + urlHash);
-                    var contentClasses = '';
+                    var contentClasses = "";
 
                     var hideRefresh = function(scrid) {
                         var scr = that.scrollingDivs[scrid];
@@ -6120,7 +6120,7 @@ if (!Date.now)
                             var containerPos = jQactive.offset();
                             if (elPos.bottom > containerPos.bottom && elPos.height < containerPos.height) {
                                 //apply fix
-                                that.scrollingDivs[that.activeDiv.id].scrollToItem(jQel, 'bottom');
+                                that.scrollingDivs[that.activeDiv.id].scrollToItem(jQel, "bottom");
                             }
                         }
                     }

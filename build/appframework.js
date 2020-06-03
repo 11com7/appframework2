@@ -1,4 +1,4 @@
-/*! intel-appframework - v2.1.0 - 2015-05-09 */
+/*! intel-appframework - v2.1.0 - 2020-06-03 */
 
 /**
  * App Framework  query selector class for HTML5 mobile apps on a WebkitBrowser.
@@ -12,7 +12,6 @@
  * @api private
  */
  /* jshint eqeqeq:false */
-  /* global af: false */
 
 if (!window.af || typeof(af) !== "function") {
 
@@ -23,7 +22,7 @@ if (!window.af || typeof(af) !== "function") {
      * @param {Window} window The global window object
      * @api private
      */
-    var af = (function(window) {
+    var af = (function(window) { // jshint ignore:line
         "use strict";
         var nundefined,
             document = window.document,
@@ -516,7 +515,7 @@ if (!window.af || typeof(af) !== "function") {
                 $("#foo").html("new html",false); //Do not do memory management cleanup
                 ```
             * @param {String} html to set
-            * @param {boolean} [cleanup] - set to false for performance tests and if you do not want to execute memory management cleanup
+            * @param {Bool} [cleanup] - set to false for performance tests and if you do not want to execute memory management cleanup
             * @return {$afm} an appframework object
             * @title $().html([html])
             */
@@ -1895,8 +1894,8 @@ if (!window.af || typeof(af) !== "function") {
                 xhr.send(settings.data);
             } catch (e) {
                 // General errors (e.g. access denied) should also be sent to the error callback
-                deferred.resolve(context, xhr, "error",e);
-                settings.error.call(context, xhr, "error", e);
+                deferred.resolve(context, xhr, "error",e); // jshint ignore:line
+                settings.error.call(context, xhr, "error", e); // jshint ignore:line
             }
             return xhr;
         };
@@ -2100,8 +2099,8 @@ if (!window.af || typeof(af) !== "function") {
          * @api private
          */
         function detectUA($, userAgent) {
-          var userAgentLengthMax = 100;
-          userAgent = userAgent.substr ? (userAgent.length > userAgentLengthMax ? userAgent.substr(0, userAgentLengthMax) : userAgent) : '';
+          var userAgentLengthMax = 200;
+          userAgent = userAgent.substr ? (userAgent.length > userAgentLengthMax ? userAgent.substr(0, userAgentLengthMax) : userAgent) : "";
 
           $.os = {};
             $.os.webkit = userAgent.match(/WebKit\/([\d.]+)/) ? true : false;

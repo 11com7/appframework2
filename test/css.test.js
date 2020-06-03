@@ -36,6 +36,6 @@ describe("css", function () {
         var elt = document.getElementById("no1");
 
         elt.style["height"].should.equal("100px");
-        elt.style["background-color"].should.equal("#CCC");
+        elt.style["background-color"].should.equal("rgb(204, 204, 204)");
     });
 });

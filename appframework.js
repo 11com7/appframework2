@@ -2133,7 +2133,7 @@ if (!window.af || typeof(af) !== "function") {
 
             // use promise feature detection only if the tested userAgent equals the navigator.userAgent to prevent
             // false positive in unit tests with `domjs`
-            if($.os.ios && !$.os.ios7 && window && window.navigator && window.navigator["userAgent"] === userAgent) {
+            if($.os.ios && !$.os.ios7 && window && window.navigator && window.navigator.userAgent === userAgent) {
                 if("Promise" in window && -1 !== Promise.toString().indexOf("native"))
                     $.os.ios7=true;
             }

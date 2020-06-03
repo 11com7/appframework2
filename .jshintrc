@@ -18,6 +18,7 @@
     "console": false,
     "WebKitCSSMatrix": false,
     "MSCSSMatrix": false,
+    "Promise": false,
     "MSApp": false,
     "jQuery": false,
     "af":false

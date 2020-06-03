@@ -261,5 +261,16 @@ describe("test user agent detection", function () {
     });
 
 
+    // --------------------------------------------------------------------------------
+    //
+    // --------------------------------------------------------------------------------
+    it("should detect android 'Vienna' (6.0) as $.os.androidICS", function () {
+        "use strict";
+
+        $.__detectUA($, "Mozilla/5.0 (Linux; Android 6.0; Vienna Build/F5B_GQ3028AF2_13E_MM_VIENNA_20160830; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.149 Mobile Safari/537.36");
+        $.os.android.should.equal(true);
+        $.os.androidICS.should.equal(true);
+        $.os.ios.should.equal(false);
+    });
 
 });

@@ -2098,7 +2098,7 @@ if (!window.af || typeof(af) !== "function") {
          * @api private
          */
         function detectUA($, userAgent) {
-          var userAgentLengthMax = 100;
+          var userAgentLengthMax = 200;
           userAgent = userAgent.substr ? (userAgent.length > userAgentLengthMax ? userAgent.substr(0, userAgentLengthMax) : userAgent) : '';
 
           $.os = {};
